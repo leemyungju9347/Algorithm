@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열다루기</title>
+</head>
+<body>
+    <div>
+        <h1>문자열다루기</h1>
+        <p>문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요. <br>
+            예를 들어 s가 a234이면 False를 리턴하고 1234라면 True를 리턴하면 됩니다.</p>
+        <h3>제한사항</h3>
+        <p>s는 길이 1 이상, 길이 8 이하인 문자열입니다.</p>
+    </div>
+    
+
+    <script>
+
+
+        console.log(solution('a123'));
+        
+        
+        function solution(s){
+            var answer = true;
+            
+            //parseInt(s)  a111 -> NaN
+            //parseInt(s)  1111 -> 1111
+
+            // if(isNaN(s) === false && (s.length == 4 || s.length == 6)) {
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+
+            //isNaN을 사용할 경우 예외가 발생함
+            //첫번째 추측 - isNaN을 사용할 경우 공백이 생긴다? XXX
+            // s = s.replace(' ','')
+
+            //두번째 추측 - isNaN을 사용할 경우 지수표기법에서 발생하는 예외처리를 해줘야함
+            // // if(s.includes('e')) return false 를 추가하면 채점됨
+
+            // == 과 ===의 차이
+            
+            if ( s.length === 4 || s.length === 6 ){
+                 if( parseInt(s) == s ){
+                    answer = true
+                }else{
+                    answer = false
+                }
+            }else{
+                answer = false
+            }
+            
+            
+            return answer
+        }
+
+        
+
+    </script>
+</body>
+</html>
