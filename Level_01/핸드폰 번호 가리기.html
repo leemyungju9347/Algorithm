@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>핸드폰 번호 가리기</title>
+</head>
+<body>
+    <div>
+        <h1>핸드폰 번호 가리기</h1>
+        <p>프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다. 
+            전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, 
+            solution을 완성해주세요.</p>
+        <h3>제한사항</h3>
+        <p>s는 길이 4 이상, 20이하인 문자열입니다. </p>
+    </div>
+    <script>
+
+        console.log(solution('01044074711'));
+        
+        function solution(phone_number) {
+            let str = '' 
+
+            for(let i = 0; i < phone_number.length - 4; i++){
+                str += '*'
+            }
+            
+            const result = phone_number.replace(phone_number.substr(0,phone_number.length - 4),str)
+
+            console.log(phone_number.charAt(4));
+            
+
+            //^{4,20}$/ 4글자에서 20글자??
+            return result
+        }
+
+        //다른사람 풀이
+        function solution(phone_number) {
+
+            //정규식
+            const pattern = /\d(?=\d{4})/g
+            const replace = phone_number.replace(pattern,'*')
+         
+            return replace
+        }
+
+
+        function solution(phone_number) {     
+            console.log('*'.repeat(phone_number.length - 4) + '4407' );
+            console.log('010'.repeat(5)); 
+            
+            return '*'.repeat(phone_number.length - 4) + phone_number.slice(-4)
+        }
+
+
+        function solution(phone_number) {
+            let result = ''
+
+            for(let i = 0; i < phone_number.length; i++){
+                result += i < phone_number.length - 4 ? '*' : phone_number.charAt(i)
+            }
+            
+            return result
+        }
+    </script>
+</body>
+</html>
