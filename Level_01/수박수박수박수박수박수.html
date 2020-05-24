@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수박수박수박수박수박수?</title>
+</head>
+<body>
+    <div>
+       <h1>수박수박수박수박수박수?</h1>
+        <p>길이가 n이고, 수박수박수박수....와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. 
+            예를들어 n이 4이면 수박수박을 리턴하고 3이라면 수박수를 리턴하면 됩니다.
+        </p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>n은 길이 10,000이하인 자연수입니다.</li>
+        </ul> 
+    </div>
+    <script>
+        
+        console.log(waterMelon(3));
+
+        function waterMelon(n) {
+            var result = ''
+            
+            for(let i = 0; i < n; i++) result += '수박'
+
+            return result = result.slice(0,n)
+            
+        }
+        //다른사람 풀이
+        function waterMelon(n) {
+            const result ='수박'.repeat(n).slice(0,n)
+
+            return result
+            
+        }
+
+        function waterMelon(n){
+            let result = ''
+            for(let i = 0; i < n; i++){
+                result += i % 2 == 0 ? '수' : '박'
+            }
+            return result
+        }
+
+        const result = n =>{
+            return '수박'.repeat(n/2) + ( n % 2 == 0 ? '' : '수') //만약 n이 홀수이면 '수'를 더해줘라.
+        }
+
+        console.log(result(4));
+    </script>
+</body>
+</html>
