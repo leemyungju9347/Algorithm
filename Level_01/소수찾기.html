@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소수찾기</title>
+</head>
+<body>
+    <div>
+        <h1>소수찾기</h1>
+        <h3>문제설명</h3>
+        <p>1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요. <br>
+            소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.(1은 소수가 아닙니다.)</p>
+        <h3>제한사항</h3>
+        <p>n은 2이상 1000000이하의 자연수입니다.</p>
+        <h3>입출력 예 설명</h3>
+        <ol>
+            <li>1부터 10 사이의 소수는 [2,3,5,7] 4개가 존재하므로 4를 반환</li>
+            <li>1부터 5 사이의 소수는 [2,3,5] 3개가 존재하므로 3를 반환</li>
+        </ol>
+    </div>
+    <script>
+        console.log(solution(10));
+        
+        function solution(n) {
+            let cnt = 0
+            for(let i = 2; i <= n; i++){
+                for(let j = 2; j < i; j++){
+                    if( i % j == 0 ) break
+
+                    if( i == j + 1) cnt++
+                }
+            }
+
+          return cnt + 1
+        }
+    </script>
+</body>
+</html>
