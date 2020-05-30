@@ -31,13 +31,13 @@
         </p>
     </div>
     <script>
+        
         //console.log(solution(['sun', 'bed', 'car'],1));
         console.log(solution(['abce', 'abcd', 'cdx'],2));
-        
+
         
        function solution(strings, n) {
 
-        //답은 콘솔에 찍혔으나 채점이 틀림
         strings.sort(function(a,b){
             var aa = a[n].toString().toLowerCase(); 
             var bb = b[n].toString().toLowerCase();
@@ -47,24 +47,39 @@
             
         })
 
-        console.log(strings);
-  
-        
-        //strings.sort(compare)
-        
-        // function compare(a,b){
-        //     var aaa = a[n].toString().toLowerCase(); 
-        //     var bbb = b[n].toString().toLowerCase();
-
-
-        //     return a.toString().toLowerCase() < b.toString().toLowerCase() ? -1 
-        //     : a.toString().toLowerCase() == b.toString().toLowerCase() ? -1 : 1
-        // }
-
-
         return strings
         
     } 
+
+    
+
+    //다른사람 풀이
+    function solution(strings, n){
+
+            strings.sort((a,b)=>{
+                return a[n] === b[n] ? a.localeCompare(b) : a[n].localeCompare(b[n])
+            })
+
+            console.log(strings);
+            return strings
+    }
+
+    // sort()
+    // sort() 인수에 함수를 지정하면 다음 값 중 하나가 반환된다. 생략하면 오름차순
+    // - 첫번째 인수 < 두번째 인수 - 값
+    // - 첫번째 인수 > 두번째 인수 + 값
+    // - 첫번째 인수 == 두번째 인수 0 
+
+
+    
+    // localeCompare()
+    // referenceStr.localeCompare(compareString[, locales[,options]])
+    // - 기준 문자열과 비교했을때 비교 대상 문자열이 정렬상 전에 오는지, 
+    // 후에 오는지 혹은 같은 순서에 배치되었는지 알려주는 숫자를 리턴
+
+    // referenceStr이 compareStr보다 앞에 있으면 음수를 리턴,
+    // referenceStr이 compareStr뒤에 있으면 양수를 리턴
+    // 같으면 0을 리턴
     </script>
 </body>
 </html>
