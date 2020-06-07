@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평균구하기</title>
+</head>
+<body>
+    <div>
+        <h1>평균구하기</h1>
+        <h3>문제설명</h3>
+        <p>정수를 담고 있는 배열 arr의 평균값을 return하는 함수, solution을 완성해보세요.</p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>arr은 길이 1 이상, 100 이하인 배열입니다.</li>
+            <li>arr의 원소는 -10,000 이상 10,000 이하인 정수입니다.</li>
+        </ul>
+    </div>
+    <script>
+        console.log(solution([1,2,3,4]));
+        
+        function solution(arr) {
+            var answer = 0;
+
+            for(let i = 0; i < arr.length; i++) answer += arr[i]
+            return answer / arr.length;
+        }
+
+        //다른사람 풀이
+        function solution(arr) {
+            return arr.reduce((a,b)=>{return a + b}) / arr.length
+        }
+    </script>
+</body>
+</html>
