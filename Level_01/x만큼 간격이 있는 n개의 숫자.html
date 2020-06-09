@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>x만큼 간격이 있는 n개의 숫자</title>
+</head>
+<body>
+    <div>
+        <h1>x만큼 간격이 있는 n개의 숫자</h1>
+        <h3>문제설명</h3>
+        <p>함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다. 다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.</p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>x는 -10000000 이상, 10000000 이하인 정수입니다.</li>
+            <li>n은 1000 이하인 자연수입니다.</li>
+        </ul>
+    </div>
+    <script>
+        console.log(solution(2,5));
+
+        
+        function solution(x, n) {
+            var answer = [];
+            for(let i = 1; i < n + 1; i++) answer.push(x*i)
+            
+            return answer;
+        }
+        
+        function solution(x,n){
+            return Array(n).fill(x).map((v,i)=> v * (i + 1))
+        }
+
+        function solution(x,n){
+            return [...Array(n).keys()].map(v=> (v+1) * x)
+        }
+
+ 
+        
+        // function solution(x,n){
+        //     return nNumbers(x,n)
+        // }
+
+        // const nNumbers = (x, n)=>{
+        //     return Array.from({length: n},(v,index)=>(index+1)*x);
+        // };
+
+
+        //다른사람 풀이
+
+        /*
+            **유사배열**
+
+            배열처럼 보이지만 배열이 아닌 객체
+            const array = [1,2,3,4] - 배열
+            const nodes = document.querySelectorAll('div') [div, div, div, div, div, ...] - 유사배열
+            const els = document.body.children; HTMLCollection [noscript, link, div, script, ...] - 유사배열
+
+            const yoosa = {
+                0:'a',
+                1:'b',
+                3:'c',
+                length:3
+            }
+            = > 유사배열의 형태 , 키가 숫자이고, length 속성을 가지고 있고, yoosa[0], yoosa[1], yoosa.length 속성을
+            활용할 수 있어서 배열처럼사용할 수 있다.
+
+            유사배열, 배열을 구분해야하는 이유는 유사배열에는 배열의 메소드를 사용할 수 없기 때문
+            els에 forEach 같은 배열 메소드를 사용하면 에러가 발생한다 (but nodes는 프로토타입에 forEach가 있기 때문에 가능)
+
+            이럴때 유사배열이 배열의 메소드를 빌려쓰려면,
+            call이나 apply를 이용해 배열 프로토타입에서 메소드를 빌려오는 방법이 있다.
+
+            Array.prototype.forEach.call(nodes,function(el){console.log(el)})
+            [].forEach.call(els, function(el) { console.log(el); });
+
+            이렇게 하면  map이나 filter, reduce 등의 다른 배열 메서드도 사용 가능
+            
+        
+            **Array.from()**
+            Array.from을 사용하면 위 방법보다 더 간단하게 배열 메소드를 사용할 수 있음
+
+            Array.from(nodes).forEach(function(el){ console.log(el)})
+
+            **Array.of()**
+            인자의 수나 유형에 관계없이 가변인자를 갖는 새 Array 인스턴스를 만들어준다.
+
+            Array.of(7) -> [7]
+            Array.of(1,2,3,4) -> [1,2,3,4]
+
+            Array(7) -> [,,,,,,]
+            Array(1,2,3,4) -> [1,2,3,4]
+
+            Arrayof() 와 Array 생성자 차이
+            Array.of(7)는 하나의 요소 7을 가지 배열을 생성,
+            Array(7)은 length가 7인 빈배열을 생성한다.
+
+
+            **Array.fill(value,start,end)**
+            
+            const array1 = [1,2,3,4]
+            array1.fill(0,2,4)
+            [1,2,0,0]
+
+            array1.fill(5,1)
+            [1,5,5,5]
+
+            array1.fill(6)
+            [6,6,6,6]
+
+            **keys()**
+            배열의 각 인덱스를 키 값으로 가지는 새로운 Array interator객체를 반환
+
+            const array1 = ['a','b','c'] 
+            const iterator = array1.keys()
+
+            for(const key of iterator){
+                console.log(key)
+            }
+
+            0
+            1
+            2
+        */
+    </script>
+</body>
+</html>
