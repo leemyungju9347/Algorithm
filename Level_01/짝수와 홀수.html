@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>짝수와 홀수</title>
+</head>
+<body>
+    <div>
+        <h1>짝수와 홀수</h1>
+        <h3>문제설명</h3>
+        <p>정수 num이 짝수일 경우 Even을 반환하고 홀수인 경우 Odd를 반환하는 함수, solution을 완성해주세요.</p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>num은 int 범위의 정수입니다.</li>
+            <li>0은 짝수입니다.</li>
+        </ul>
+    </div>
+    <script>
+        console.log(solution(0));
+        
+        function solution(num) {
+            return num % 2 == 0 ? 'Even' : 'Odd'
+        }
+
+        //다른사람 풀이
+        function evenOrOdd(num) {
+            //숫자 0은 false이기 때문에 
+            return num % 2 ? "Odd" : "Even";
+        }
+
+        /*
+            자바스크립트에서 false로 간주되는 것들
+            - undefined, null
+            - NaN
+            - 0 (숫자 리터럴), -0
+            - ''(빈문자열)
+            - false
+
+
+            Boolean('')
+            -> false
+        */
+    </script>
+</body>
+</html>
