@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜라츠 추측</title>
+</head>
+<body>
+    <div>
+        <h1>콜라츠 추측</h1>
+        <h3>문제설명</h3>
+        <p>
+            1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다. 
+            작업은 다음과 같습니다.
+            1-1. 입력된 수가 짝수라면 2로 나눕니다. 
+            1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다.
+            2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.
+            예를 들어, 입력된 수가 6이라면 6→3→10→5→16→8→4→2→1 이 되어 총 8번 만에 1이 됩니다. 
+            위 작업을 몇 번이나 반복해야하는지 반환하는 함수, solution을 완성해 주세요. 단, 작업을 500번을 반복해도 1이 되지 않는다면 –1을 반환해 주세요.</p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>입력된 수, num은 1 이상 8000000 미만인 정수입니다.</li>
+        </ul>
+        <h4>입출력 예 설명</h4>
+        <p>
+            입출력 예 #1 <br>
+            문제의 설명과 같습니다.
+        </p>
+        <p>
+            입출력 예 #2 <br>
+            16 -> 8 -> 4 -> 2 -> 1 이되어 총 4번만에 1이 됩니다.
+        </p>
+        <p>
+            입출력 예 #3 <br>
+            626331은 500번을 시도해도 1이 되지 못하므로 -1을 리턴해야합니다.
+        </p>
+    </div>
+    <script>
+        let num = 16
+        console.log(solution(num));
+        
+        function solution(num) {
+            let count = 0
+            // 1. 반복문 조건을 줌 변수 ans가 1이 되면 반복을 중지하도록
+            // 2. 반복문으로 num이 들어왔을때 짝수인지 홀수인지 판별해서 계산한 값을 변수에 담아줌, 카운트 +1을 해줌
+            // 3. 그 변수를 다시 반복문 처음으로 돌아가서 2번 과정을 반복
+            // 4. ans가 1이되면 중지
+
+            while( num > 1 ){
+                if( num % 2 == 0 ){
+                    num = num / 2
+                }else{
+                    num = num * 3 + 1
+                }
+                count++
+            }
+            
+            return count >= 500 ? -1 : count
+        }
+        
+        //다른사람 풀이
+        function solution(num){
+            let answer = 0
+
+            while( num != 1 && answer !=500 ){
+                num % 2 == 0 ? num = num / 2 : num = num * 3 + 1
+
+                answer++
+
+                
+            }
+            return num == 1 ? answer : -1
+        }
+
+        function solution(num,cnt = 0) {
+            return num == 1 ? (cnt >= 500 ? -1 : cnt) : solution(num % 2 == 0 ? num / 2 : num * 3 + 1, ++cnt)
+        }
+
+        function solution(num) {
+            let answer = 0
+            for(let i = 0; i < 500; i++){ // i를 500번까지 반복
+                if( num != 1 ){
+                    num = num % 2 == 0 ? num / 2 : num * 3 + 1
+                    
+                }else{ //만약 1인 경우
+                    return answer = i
+                }
+                
+            }
+
+            return answer // 500번을 진행했지만 return 값이 없는 경우
+        }
+    </script>
+</body>
+</html>
