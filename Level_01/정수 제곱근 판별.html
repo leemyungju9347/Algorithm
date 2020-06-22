@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정수 제곱근 판별</title>
+</head>
+<body>
+    <div>
+        <h1>정수 제곱근 판별</h1>
+        <h3>문제설명</h3>
+        <p>임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려 합니다.
+            n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.</p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>n은 1이상, 50000000000000 이하인 양의 정수입니다.</li>
+        </ul>
+        <h4>입출력 예 설명</h4>
+        <p>
+            <strong>입출력 예#1 </strong><br>
+            121은 양의 정수 11의 제곱이므로, (11+1)를 제곱한 144를 리턴합니다.
+        </p>
+        <p>
+            <strong>입출력 예#2 </strong><br>
+            3은 양의 정수의 제곱이 아니므로, -1을 리턴합니다.
+        </p>
+    </div>
+    <script>
+        
+        // console.log(solution(121));
+        console.log(solution(3));
+
+        function solution(n) {
+            let sqrt = Math.sqrt(n)
+            return Number.isInteger(sqrt) ? Math.pow(sqrt+1,2) : -1
+
+        }
+
+        //다른사람 풀이
+        function solution(n) {
+            let sqrt = Math.sqrt(n)
+
+            switch ( n % sqrt ) {
+                case 0:
+                    
+                    return Math.pow(sqrt+1,2)
+            
+                default:
+                    return -1
+            }
+
+        }
+
+        /*
+            ** 정수 판단하는 방법 **
+            1. 정규식
+            - 모든 브라우저에서 동작
+            - 숫자뿐만 아니라 문자열 형태도 처리 가능
+            - 대부분의 경우 정수이면서 0보다 큰 수를 판단할 수 있음
+
+            const myInt = '1236'
+            if(/^(\-|\+)?([0-9]+)$/.test(myInt) && parseInt(myInt) > 0 ){
+                * 정수이면서 양수인 값을 이용한 처리
+            }
+            참고 : parseInt('hello')의 결과는 NaN
+            NaN == true 는 false 반환
+
+            ** isInteger **
+            - 익스플로러 적용 x
+            - 값이 NaN이거나 Infinity일 경우 false 반환
+            - 문자열일 경우 parseInt()를 이용하여 NaN 또는 정수로 변환하여 이용
+
+            예)
+            Number.isInteger(0) true
+            Number.isInteger(1) true
+            Number.isInteger(-100000) true
+            Number.isInteger(99999999999999999999999) true
+
+            Number.isInteger(0.1) false
+            Number.isInteger(Math.PI) false
+
+            Number.isInteger(NaN) false
+            Number.isInteger(Infinity) false
+            Number.isInteger(-Infinity) false
+
+            Number.isInteger(parseInt("123.44")) true
+
+
+            ** Math.sqrt **
+            특정숫자의 제곱근 값을 계산해주는 함수
+
+            Math.sqrt(1024) 32
+            
+
+            ** Math.pow **
+            특정 숫자의 거듭제곱 값을 계산해주는 함수
+
+            Math.pow(대상숫자,거듭제곱 횟수)
+
+
+            ** switch case **
+            switch(식){
+                case 값1: // 식의 결과가 값1과 같을때
+
+                실행문장1
+                break;
+
+                case 값2: // 식의 결과가 값2와 같을때
+
+                실행문장2
+                break
+
+                default: // 어느 값과도 같지 않을때
+                실행문장 m
+            }
+        */
+
+    </script>
+</body>
+</html>
