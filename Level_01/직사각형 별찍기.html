@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직사각형 별찍기</title>
+</head>
+<body>
+    <div>
+        <h1>직사각형 별찍기</h1>
+        <h3>문제설명</h3>
+        <p>이 문제에는 표준 입력으로 두 개의 정수 n과 m이 주어집니다.
+            별(*) 문자를 이용해 가로의 길이가 n, 세로의 길이가 m인 직사각형 형태를 출력해보세요.</p>
+        <h3>제한사항</h3>
+        <ul>
+            <li>n과 m은 각각 1000 이하인 자연수입니다.</li>
+        </ul>
+    </div>
+    <script>
+        process.stdin.setEncoding('utf8');
+        process.stdin.on('data', data => {
+            const n = data.split(" ");
+            const a = Number(n[0]), b = Number(n[1]);
+            let ans = ''
+            for(let i = 0; i < b; i++){
+                for(let j = 0; j < a; j++){
+                    ans+='*'
+                }
+                ans+='\n'
+            }
+            console.log(ans) 
+        });
+
+        // 일반 js 함수로 연습
+        const n = 5
+        const m = 3 
+        console.log(solution(n,m));
+        
+        function solution(n,m){
+            // 가로 n
+            // 세로 m
+            let ans = ''
+            for(let i = 0; i < m; i++){
+                for(let j =0; j < n; j++){
+                    ans += '*'
+                }
+                ans+= '\n'
+            }
+            return ans
+        }
+
+
+        // 다른 사람 풀이
+        process.stdin.setEncoding('utf8');
+        process.stdin.on('data', data => {
+            const n = data.split(" ");
+            const a = Number(n[0]), b = Number(n[1]);
+            
+            const row = `${'*'.repeat(a)}\n`
+            
+            console.log(row.repeat(b))
+        });
+
+        function solution(a,b){
+
+            const row = '*'.repeat(a)
+            let ans = ''
+            for(let i =0; i < b; i++){
+                ans += row +'\n'
+            }
+            console.log(ans);
+            
+        }
+
+
+        
+    </script>
+</body>
+</html>
