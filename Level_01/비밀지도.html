@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀지도</title>
+</head>
+<body>
+    <div>
+        <h1>비밀지도</h1>
+        <h3>문제설명</h3>
+        <p>네오는 평소 프로도가 비상금을 숨겨놓는 장소를 알려줄 비밀지도를 손에 넣었다. 그런데 이 비밀지도는 숫자로 암호화되어 있어 위치를 확인하기 위해서는 암호를 해독해야 한다. 다행히 지도 암호를 해독할 방법을 적어놓은 메모도 함께 발견했다.</p>
+        <ol>
+            <li>지도는 한 변의 길이가 n인 정사각형 배열 형태로, 각 칸은 공백(" ) 또는벽(#") 두 종류로 이루어져 있다.</li>
+            <li>전체 지도는 두 장의 지도를 겹쳐서 얻을 수 있다. 각각 지도 1과 지도 2라고 하자. 지도 1 또는 지도 2 중 어느 하나라도 벽인 부분은 전체 지도에서도 벽이다. 지도 1과 지도 2에서 모두 공백인 부분은 전체 지도에서도 공백이다.</li>
+            <li>지도 1과 지도 2는 각각 정수 배열로 암호화되어 있다.</li>
+            <li>암호화된 배열은 지도의 각 가로줄에서 벽 부분을 1, 공백 부분을 0으로 부호화했을 때 얻어지는 이진수에 해당하는 값의 배열이다.</li>
+        </ol>
+        <p>네오가 프로도의 비상금을 손에 넣을 수 있도록, 비밀지도의 암호를 해독하는 작업을 도와줄 프로그램을 작성하라.</p>
+        <h4>입력 형식</h4>
+        <p>입력으로 지도의 한 변 크기 n 과 2개의 정수 배열 arr1, arr2가 들어온다.</p>
+        <ul>
+            <li>1 ≦ n ≦ 16</li>
+            <li>arr1, arr2는 길이 n인 정수 배열로 주어진다.</li>
+            <li>정수 배열의 각 원소 x를 이진수로 변환했을 때의 길이는 n 이하이다. 즉, 0 ≦ x ≦ 2n - 1을 만족한다.</li>
+        </ul>
+        <h4>출력 형식</h4>
+        <p>원래의 비밀지도를 해독하여 '#', 공백으로 구성된 문자열 배열로 출력하라.</p>
+    </div>
+    <script>
+        console.log(solution(5,[9, 20, 28, 18, 11],[30, 1, 21, 17, 28]));
+        
+        function solution(n, arr1, arr2) {
+            var answer = [];
+            // 1. 각 배열을 이진수로 변환해서 문자열로 담는다.
+            // 2. 이진수로 변환한 숫자들을 배열끼리 연산한다.
+
+            let ans1 = []
+            let ans2 = []
+            
+            for(let i = 0; i < n; i++){
+                
+                // 이진수로 변환해서 배열에 담아준다.
+                arr1[i] = arr1[i].toString(2)
+                arr2[i] = arr2[i].toString(2)
+                
+                
+                // 각 이진수끼리 길이를 맞춰준다.
+                ans1[i] = arr1[i].length < n ? '0'.repeat(n-arr1[i].length) + arr1[i] : arr1[i]
+                ans2[i] = arr2[i].length < n ? '0'.repeat(n-arr2[i].length) + arr2[i] : arr2[i]
+
+            }
+            
+            
+            // 변환한 이진수끼리 연산..
+            // 1 - 1 = 1 / 0 - 0 = 0 / 1 - 0 = 1 
+            // 조건 
+            // 1. 둘 다 0 이면 0 (공백)
+            // 2. 둘 중 하나라도 1이 있으면 1 (#)
+            // 3. 둘 다 1이면 1 (#)
+            for(let i = 0; i < ans1.length; i++){
+                let word = ''
+                // 배열들 안에서 반복문
+                for(let j = 0; j < ans1[i].length; j++){
+                    // 둘 다 '0'이면 공백 삽입
+                    if( ans1[i][j] == '0' && ans2[i][j] == '0' ){                      
+                        word += ' '
+
+                    //그렇지 않을 경우에는 '#'
+                    }else{
+                        word += '#'
+                    }
+                }
+                answer.push(word) // 연산한 word를 정답 배열에 삽입
+            }
+
+            // return answer
+        }
+        
+        // 다른사람 풀이
+        function solution(n, arr1, arr2){
+            return arr1.map((a,b)=>
+
+                (a | arr2[b])
+                .toString(2)
+                .padStart(n,0)
+                .replace(/0/g,' ')
+                .replace(/1/g,'#')
+                
+            )
+
+
+            
+        }
+
+        /*
+            **padStart(targetLength,[, padString])**
+            현재 문자열의 시작을 다른 문자열로 채워, 주어진 길이를 만족하는 새로운 문자열을 반환한다.
+            
+            targetLength : 목표 문자열 길이. 현재 문자열 길이보다 작다면 채워지지 않고 반환
+            padString : 현재 문자열에 채워넣을 다른 문자열. 
+
+            'abc'.padStart(10);         // "       abc"
+            'abc'.padStart(10, "foo");  // "foofoofabc"
+            'abc'.padStart(6,"123465"); // "123abc"
+            'abc'.padStart(8, "0");     // "00000abc"
+            'abc'.padStart(1);          // "abc" 
+
+
+            **비트연산자**
+
+            & : 대응되는 비트가 모두 1이면 1을 반환함(비트 AND연산)
+            | : 대응되는 비트 중에 하나라도 1이면 1을 반환함(비트 OR연산)
+            ^ : 대응되는 비트가 서로 다르면 1을 반환함(XOR연산)
+            ~ : 비트 1이면 0, 0이면 1로 반전시킴(NOT연산)
+            << : 지정한 수만큼 비트들을 전부 왼쪽으로 이동시킴(left shift 연산)
+            >> : 부호를 유지하면서 지정한 수만큼 비트들을 전부 오른쪽으로 이동시킴(right shift 연산)
+        */
+    </script>
+</body>
+</html>
