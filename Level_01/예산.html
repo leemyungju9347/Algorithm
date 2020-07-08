@@ -40,8 +40,8 @@
 
     <script>
         
-        // console.log(solution([1,3,2,5,4],9));
-        console.log(solution([2,2,3,3],9));
+        console.log(solution([1,3,2,5,4],9));
+        // console.log(solution([2,2,3,3],10));
         
         function solution(d, budget) {
             let answer = 0;
@@ -69,11 +69,10 @@
                 answer = d.length
             }
 
-            // return answer
+            return answer
         }
 
-        //다른사람 풀이 - https://boycoding.tistory.com/240
-        // 원하는 답 안나옴
+        //다른사람 풀이
         function solution(d, budget){
             let sum = 0;
             let num = 0;
@@ -89,7 +88,39 @@
                     break
                 }
             }
+
+            return num
         }
+
+
+        function solution(d, budget) {
+            let answer = 0 
+            let money = 0;
+            d.sort((a,b)=> a - b).forEach((val,index)=> {
+                money += val
+                if( money <= budget ){
+                    answer++
+                }
+            });
+            return answer
+        }
+
+        /*
+            pop() 
+            배열에서 가장 마지막 요소를 제거하고 그 요소를 반환한다.
+
+            const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+
+            console.log(plants.pop()); // 'tomato'
+
+            console.log(plants); // ['broccoli', 'cauliflower', 'cabbage', 'kale']
+
+            plants.pop();
+
+            console.log(plants); // ['broccoli', 'cauliflower', 'cabbage']
+
+        
+        */
     </script>
 </body>
 </html>
