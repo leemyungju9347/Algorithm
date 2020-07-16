@@ -56,46 +56,70 @@
             - 중첩 : 다른 스타상 효과와 중첩 => 점수 4배
             - #과 중첩 : 중첩된 아차상의 점수 -2배
         */
-        // const dartResult = '1S2D*3T'
-        const dartResult = '1S*2T*3S'
+        // 1
+        const dartResult = '1S2D*3T'
+        // 2
+        // const dartResult = '1D2S#10S'
+        // 3
+        // const dartResult = '1D2S0T'
+        // 4
+        // const dartResult = '1S*2T*3S'
 
-        
+
+        // 1S*2T*3S	
+        // 1D#2S*3S	
+        // 1T2D3D#	
+        // 1D2S3T
+        // const dartResult = '1S*2T*3S'
+
+        // 아직 미완.. 주말에 처음부터 다시 풀어볼것..
         console.log(solution(dartResult));
         function solution(dartResult) {
             const arr = []
+            let cnt = 0;  // 점수 위치확인용 변수 
+            let opt = 0; // 옵션 위치확인용 변수
             let dartArray = [...dartResult.toString()]
             
-            for(let i = 0; i < dartArray.length; i++){
+            for(let i = 0; i < dartArray.length; i+=1){
+                // console.log(dartArray[i]);
                 // 싱글의 경우
                 if( dartArray[i] == 'S' ){
                     arr.push(Math.pow(Number(dartArray[i-1]),1))
+                    cnt++ //cnt 1
+                    console.log('s',cnt);
 
                 // 더블의 경우
                 }else if( dartArray[i] == 'D' ){
                     arr.push(Math.pow(Number(dartArray[i-1]),2))
+                    cnt++ 
+
+                    console.log('d',cnt);
 
                 // 트리플의 경우
                 }else if( dartArray[i] == 'T' ){
                     arr.push(Math.pow(Number(dartArray[i-1]),3))
+                    cnt++ 
+                    console.log('t',cnt);
 
                 // '*' 스타상일 경우  
                 }else if( dartArray[i] == '*' ){
-                    // 일반
-                    // 첫번째자리에 왔을 경우
-                    // console.log(dartArray[i], i);
-                    if( i > 2 ){
-                        
-                    }else if( i <= 2 ){
-                        console.log(arr[i-2]); 
-                    }
-
-                    // 중첩일 경우
-
-                   
+                    opt++
+                    console.log('opt',opt);
+                    // console.log(arr[cnt-1]);
                 }
             }
+            // console.log(arr);
             console.log(arr);
+            // return 
         }
+        
+        // 다른 사람 풀이
+        // function solution(dartResult) {
+
+        // }
+
+
+
     </script>
 </body>
 </html>
