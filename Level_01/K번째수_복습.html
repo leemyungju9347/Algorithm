@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(solution([1, 5, 2, 6, 3, 7, 4],[[2, 5, 3], [4, 4, 1], [1, 7, 3]]));
+
+        function solution(array, commands) {
+            let ans = [];
+            for(let i = 0; i < commands.length; i++){
+                ans.push(array.slice(commands[i][0]-1,commands[i][1]))
+                ans[i].sort((a,b)=>{return a-b})
+            }
+            return ans.map((a,b)=>a[commands[b][2]-1])
+        }
+
+        // 다른사람 풀이
+        function solution(array, commands) {
+            return commands.map(command => {
+                const [aPosition,bPosition,position] = command
+                const newArray = array.filter((v,i)=>
+                    i >= aPosition - 1 && i <= bPosition - 1
+                ).sort((a,b)=> a - b)
+
+                return newArray[position-1]
+            })
+        }
+
+        function solution(array, commands) {
+            let arr = commands.map((a,i)=>{
+                return array.slice(a[0]-1,a[1]).sort((a,b)=> a - b)[a[2]-1]
+            })
+            return arr
+        }
+
+    </script>
+</body>
+</html>
