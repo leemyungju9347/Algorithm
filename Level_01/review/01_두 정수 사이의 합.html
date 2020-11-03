@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두 정수 사이의 합</title>
+</head>
+<body>
+    <h1>두 정수 사이의 합</h1>
+
+    <script>
+        console.log(solution(3,5));
+
+        function solution(a,b) {
+            const min = Math.min(a,b);
+            const max = Math.max(a,b);
+            let sum = 0;
+
+            for(let i = min; i <= max; i++){
+                sum += i
+            }
+
+            return sum
+        }
+
+
+        /*
+            - Math.abs()
+            절대값 구하는 함수
+            Math.abs(-5) ==> 5
+
+        */
+    </script>
+</body>
+</html>
