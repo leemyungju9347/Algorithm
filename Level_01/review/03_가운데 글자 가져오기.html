@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1>가운데 글자 가져오기</h1>
+    <script>
+        function solution(str) {
+            let string = '';
+
+            if( str.length % 2 == 0 ) {
+                string = str.substr((str.length / 2) - 1,2)
+
+            }else{
+                string = str.substr(Math.floor(str.length / 2),1)
+            }
+
+            return string
+        }
+
+        console.log(solution('abcde'));
+        console.log(solution('qwer'));
+
+        /*
+            - substring(시작인덱스, 종료인덱스)
+
+            - substr(시작인덱스, 길이)
+
+            - Math.floor(x) 내림
+            
+        
+        */
+    </script>
+</body>
+</html>
