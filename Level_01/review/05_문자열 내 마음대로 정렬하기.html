@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1>문자열 내 마음대로 정렬하기</h1>
+    <script>
+        function solution(strings,n) {
+            const str = 'apple';
+            console.log(str.localeCompare('agg'));
+            
+            strings.sort((a,b)=>{
+                const lowerCaseA = a.toLowerCase();
+                const lowerCaseB = b.toLowerCase();
+
+                if( lowerCaseA[n] > lowerCaseB[n] ) return 1;
+                if( lowerCaseA[n] < lowerCaseB[n] ) return -1;
+                if( lowerCaseA[n] == lowerCaseB[n] ) return lowerCaseA.localeCompare(lowerCaseB)
+            })
+
+            return strings
+        }
+
+
+        // 다른사람 풀이
+        function solution(strings,n) {
+            return strings.sort((a,b)=>{ return a[n] === b[n] ? a.localeCompare(b) : a[n].localeCompare(b[n]) })
+        }
+
+        console.log(solution(['sun', 'bed', 'car'],1));
+        console.log(solution(['abce', 'abcd', 'cdx'],2));
+
+
+        /*
+            - localeCompare
+
+            const str = 'javaScript';
+
+            str.localeCompare('apple') // 1 -> 알파벳 순서 정렬상 인수 'apple'은 'javascript'보다 앞쪽에 있다.
+
+            str.localeCompare('kiss') // -1 -> 알파벳 순서상 'kiss'는 'javascript'보다 뒤쪽에 있다.
+
+            str.localCompare('javaScript') // 0 -> 알파벳 순서상 'javaScript'는 'javaScript'와 동등한 위치에 있다.
+
+            const str = 'apple';
+            console.log(str.localeCompare('javascript')); // -1
+
+            const str = 'apple';
+            console.log(str.localeCompare('abc')); // 1
+
+
+            - sort()
+
+            * 오름차순
+
+            arr.sort((a,b)=>{
+
+                if(a > b) return 1;
+                if(a < b) return -1;
+                if(a === b) return 0;
+            })
+
+            * 내림차순
+
+            arr.sort((a,b)=>{
+
+                if(a < b) return 1;
+                if(a > b) return -1;
+                if(a === b) return 0;
+            })
+
+
+        */
+    </script>
+</body>
+</html>
