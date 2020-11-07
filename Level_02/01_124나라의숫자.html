@@ -15,23 +15,17 @@
             
 
             while(n > 0) {
-                console.log('첫번쨰 nnnn',n);
                 remain = n % 3;
-                console.log('remain',remain);
                 n = parseInt(n/3);
-                console.log('n',n);
 
-                if (remain === 0) {
+                if (remain === 0) { // 3으로 나누어떨어지는 경우 앞자리 수가 바뀌는 구간이기 때문에 조건을 줌
                     n = n - 1;
-                    console.log('4일때 n!',n);
                 }
 
                 answer = numbers[remain] + answer
 
-                console.log('두번째 nnnn',n);
-
             }
-            return '답은' + answer
+            return answer
         }
 
         console.log(solution(6));
@@ -71,9 +65,6 @@
             24 - 214
             -----
             25 - 221
-        
-        
-        
         
         */
     </script>
