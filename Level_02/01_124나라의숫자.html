@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1>124 나라의 숫자</h1>
+    <script>
+        function solution(n) {
+            let answer = '';
+            let remain = 0; // 나머지를 표시하기 위한 변수
+            const numbers = ['4','1','2'];
+            
+
+            while(n > 0) {
+                console.log('첫번쨰 nnnn',n);
+                remain = n % 3;
+                console.log('remain',remain);
+                n = parseInt(n/3);
+                console.log('n',n);
+
+                if (remain === 0) {
+                    n = n - 1;
+                    console.log('4일때 n!',n);
+                }
+
+                answer = numbers[remain] + answer
+
+                console.log('두번째 nnnn',n);
+
+            }
+            return '답은' + answer
+        }
+
+        console.log(solution(6));
+
+
+        /*
+            1 - 1 
+            2 - 2
+            3 - 4
+            -----
+            4 - 11
+            5 - 12
+            6 - 14
+            -----
+            7 - 21
+            8 - 22
+            9 - 24 
+            -----
+            10 - 41
+            11 - 42 
+            12 - 44
+            -----
+            13 - 111
+            14 - 112
+            15 - 114
+            -----
+            16 - 121
+            17 - 122
+            18 - 124
+            -----
+            19 - 141 
+            20 - 142 
+            21 - 144
+            -----
+            22 - 211
+            23 - 212
+            24 - 214
+            -----
+            25 - 221
+        
+        
+        
+        
+        */
+    </script>
+</body>
+</html>
