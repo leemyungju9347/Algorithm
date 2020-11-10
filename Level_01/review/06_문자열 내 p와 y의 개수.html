@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1>문자열 내 p와 y의 개수</h1>
+    <script>
+        function solution(s) {
+            let stringCnt = 0;
+
+            for(let i = 0; i < s.length; i++) {
+                
+                if( s[i].toLowerCase() === 'p' ) {
+                    stringCnt++
+                }else if(s[i].toLowerCase() === 'y'){
+                    stringCnt--
+                }
+            }
+
+            console.log('ppppppp',stringCnt);
+            return stringCnt === 0 ? true : false
+        }
+
+        console.log(solution('pPoooyY'));
+        console.log(solution('Pyy'));
+
+    </script>
+</body>
+</html>
