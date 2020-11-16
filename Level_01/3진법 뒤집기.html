@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3진법 뒤집기</title>
+</head>
+<body>
+    <h1>3진법 뒤집기</h1>
+    <script>
+        // 내 풀이 01
+        function solution(n) {
+            const ternary= n.toString(3).split('').reverse().join(''); // 3진법으로 바꾸고
+            const answer = parseInt(ternary,3); // 10진법으로 바꿔준다.
+
+
+            return answer
+        }
+
+
+        // 내풀이 02
+        function solution(n) {
+            let ternaryArr = [];
+            let answer = 0
+
+            while( n !== 0 ) {
+                ternaryArr.unshift(n % 3);
+                n = Math.floor(n / 3);
+            }
+
+            ternaryArr.forEach((value,index)=>{
+                answer = answer + Math.pow(3,index) * value
+            })
+
+            return answer
+        }
+
+        // 45
+        // 125
+
+        console.log(solution(45));
+        console.log(solution(125));
+
+
+
+        /*
+            - unshift() 배열의 맨 앞에 값을 추가한다.
+            - push() 배열의 맨 끝에 값을 추가한다.
+        
+        
+        */
+    </script>
+</body>
+</html>
