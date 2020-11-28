@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1>위장</h1>
+    <script>
+        // 풀이 1
+        function solution(clothes) {
+            var answer = 1;
+            let obj = {}
+
+            for(let i = 0; i < clothes.length; i++ ) {
+                obj[clothes[i][1]] =( obj[clothes[i][1]] || 1) + 1
+            }
+
+            for(let key in obj) {
+                answer = answer * obj[key];
+            }
+
+
+            return answer - 1;
+            
+        }
+
+        // 풀이 2
+        function solution(clothes) {
+            let answer = 1;
+            let clothesHash = clothes.reduce((a,x) => {
+                if( !a[x[1]] ) a[x[1]] = 1 // '옷을 입지 않을 경우'를 고려하여 기본값 1 지정
+
+                a[x[1]]++
+
+                return a
+            },{});
+
+            for(let key in clothesHash) {
+                answer *= clothesHash[key]
+            }
+
+            return answer - 1;
+
+            
+        }
+
+        console.log(solution([['yellow_hat', 'headgear'], ['blue_sunglasses', 'eyewear'], ['green_turban', 'headgear']]));
+        // console.log(solution([['crow_mask', 'face'], ['blue_sunglasses', 'face'], ['smoky_makeup', 'face']]));
+
+
+        /*
+            Object.values
+        
+        */
+
+        // 참고출처
+        // 1. https://velog.io/@fastpace04/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4JavaScript-%EC%9C%84%EC%9E%A5
+        // 2. https://one-it.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-Hash-%EC%9C%84%EC%9E%A5
+    </script>
+</body>
+</html>
