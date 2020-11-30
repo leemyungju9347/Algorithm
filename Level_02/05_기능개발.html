@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1>기능개발</h1>
+    <script>
+        function solution(progresses, speeds) {
+            let answer = [];
+            let developDay = [];
+            const developComp = 100;
+
+            for(let i = 0; i < progresses.length; i++) {
+                let day = (developComp - progresses[i]) / speeds[i];
+                if( !Number.isInteger(day) ) {
+                    day = Math.ceil(day)
+                }   
+                developDay.push(day)
+            }
+
+            let distNum = 1;
+            let before = developDay[0];
+
+            for(let i = 1; i < developDay.length; i++) {
+                let current = developDay[i];
+
+                if( before >= current ) {
+                    distNum++
+                }else {
+                    answer.push(distNum);
+                    before = current;
+                    distNum = 1;
+                }
+            }
+
+            answer.push(distNum)
+
+            return answer;
+        }
+
+        console.log(solution([93, 30, 55],[1, 30, 5]));
+        console.log(solution([95, 90, 99, 99, 80, 99],[1, 1, 1, 1, 1, 1]));
+
+        // 참고출처 https://noogoonaa.tistory.com/73
+    </script>
+</body>
+</html>
