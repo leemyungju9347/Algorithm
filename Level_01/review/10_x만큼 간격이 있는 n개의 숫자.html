@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+    <h1></h1>
+    <p>함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다. 다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.</p>
+
+    <script>
+        // 2
+        // 5
+        // 2, 4, 6, 8, 10
+        // 1, 2, 3, 4, 5
+        function solution(x,n) {
+            let answer = [];
+
+            for(let i = 1; i < n + 1; i++ ) {
+                answer.push(i*x)
+
+            }
+
+            return answer;
+        }
+
+
+        // 다른사람 풀이 1 
+        function solution(x, n) {
+            var answer = [];
+            var a;
+            for(var i = 0;i < n; i++){
+                a = x*(i+1);
+                answer.push(a);
+            }
+            return answer;
+        }
+           
+            
+
+
+        // 다른사람 풀이 2 Array, fill
+        // -4, 2 / 0, 1
+        // -4 i+1
+        // -8
+        function solution(x, n) {
+            return Array(n).fill(x).map((x,i)=> x * (i + 1))
+        }
+
+        // 다른사람 풀이 3
+        function solution(x, n) {
+            console.log(Array.from({length:n},(v,i) => x * (i+1)));
+        }
+
+
+
+        console.log(solution(-4,2));
+
+        /*
+        
+            # Math.abs(num)
+
+            # Array(num.length)
+
+            # Object.keys()
+            1. 객체 예시
+            const obj = {
+                a:'사과',
+                b:'배',
+                c:'달이'
+            }
+
+            Object.keys(obj) => [a,b,c]
+
+            2. 배열 예시
+            [...Array(n).keys()] => [0,1]
+
+
+            # Array.from()
+            1. 예시
+            Array.from({length:num}, (x,i)=> x + i)
+
+            2. 예시
+            Array.from('foo') // [f,o,o]
+            Array.from([1,2,3], x=> x + 1) // [2,3,4]
+        */
+    </script>
+</body>
+</html>
